@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import boto3
 import os
 from dotenv import load_dotenv
@@ -18,7 +18,7 @@ BUCKET_NAME = 'my-flask1-bucket'
 
 @app.route('/')
 def home():
-    return 'Hello, Flask with S3!'
+    return render_template('index.html')
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -34,6 +34,8 @@ def list_files():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
+
+
 
 
 
